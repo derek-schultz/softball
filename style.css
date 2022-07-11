@@ -24,7 +24,6 @@ form > input, form > label {
 }
 
 input[type=checkbox] {
-    -webkit-transform: scale(2, 2);
     margin-right: 0.5rem;
 }
 

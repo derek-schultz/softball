@@ -114,11 +114,11 @@ const ros = [
     {name: "m1", male: true, positions: ["p"]},
     {name: "m2", male: true, positions: ["ss", "3b", "1b", "c", "2b", "LCF", "LF", "RCF", "RF"]},
     {name: "m3", male: true},
-    // {name: "m4", male: true},
-    // {name: "m5", male: true},
-    // {name: "m6", male: true},
-    // {name: "m7", male: true},
-    // {name: "m8", male: true},
+    {name: "m4", male: true},
+    {name: "m5", male: true},
+    {name: "m6", male: true},
+    {name: "m7", male: true},
+    {name: "m8", male: true},
     {name: "m9", male: true},
     {name: "f1", male: false},
     {name: "f2", male: false},
@@ -127,9 +127,9 @@ const ros = [
 ];
 
 const myTeam = new Team();
-for (let r of ros) {
-    myTeam.addPlayer(r);
-}
+// for (let r of ros) {
+//     myTeam.addPlayer(r);
+// }
 
 window.onbeforeunload = function () {
     return "";
@@ -145,6 +145,14 @@ document.getElementById("add-player").addEventListener("submit", (e) => {
     }
     positions = positions.filter(x => x.length > 0);
     myTeam.addPlayer({name, positions, male});
+    const rosterLi = document.createElement("li");
+    rosterLi.textContent = name;
+    const rosterUl = document.getElementById("roster");
+    rosterUl.appendChild(rosterLi);
+
+    document.getElementById("player-name").value = "";
+    document.getElementById("player-positions").value = "";
+    document.getElementById("player-male").checked = false;
 });
 
 document.getElementById("start-game").addEventListener("click", () => {
