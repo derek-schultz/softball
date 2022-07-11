@@ -1,0 +1,80 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    padding: 0 1rem;
+}
+
+#game, #fielding {
+    display: none;
+}
+
+form#add-player {
+    padding-top: 1rem;
+}
+
+form > input, form > label {
+    display: block;
+    margin-bottom: 1rem;
+    width: 100%;
+    font-size: 1rem;
+    padding: 0.5rem;
+}
+
+input[type=checkbox] {
+    -webkit-transform: scale(2, 2);
+    margin-right: 0.5rem;
+}
+
+button, input[type=submit] {
+    font-size: 1rem;
+    padding: 0.5rem;
+    width: 100%;
+    display: block;
+    color: white;
+    background-color: dodgerblue;
+    border: none;
+    border-radius: 5px;
+    font-weight: 600;
+}
+
+nav {
+    display: flex;
+    position: sticky;
+    top: 0;
+    background: white;
+    padding: 1rem 0;
+}
+
+nav button:not(:last-child) {
+    margin-right: 5px;
+}
+
+ul#lineup {
+    margin: 0.5rem 0;
+    padding: 0;
+    border-top: solid 1px lightgray;
+}
+
+ul#lineup li {
+    margin: 0;
+    padding: 0.8rem 0;
+    list-style-type: none;
+    border-bottom: solid 1px lightgray;
+}
+
+table#fielding-table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table#fielding-table td {
+    border: solid 1px lightgray;
+    padding: 1rem;
+}
+
+table#fielding-table td.wide {
+    width: 100%;
+}
