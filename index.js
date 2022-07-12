@@ -58,7 +58,7 @@ class Team {
 
         if (numMalesBenched < 0) {
             numMalesBenched = 0;
-            numNonmalesPlaying = this.males.length;
+            numMalesPlaying = this.males.length;
         }
 
         if (numNonmalesBenched < 0) {
