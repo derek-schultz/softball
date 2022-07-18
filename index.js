@@ -73,10 +73,12 @@ class Team {
             const mStart = (inning * numMalesBenched) % this.males.length;
             const mEnd = mStart + numMalesPlaying;
             const males = this.males.concat(this.males).slice(mStart, mEnd);
+            const malesBenched = this.males.filter(x => males.indexOf(x) < 0);
 
             const nmStart = (inning * numNonmalesBenched) % this.nonmales.length;
             const nmEnd = nmStart + numNonmalesPlaying;
             const nonmales = this.nonmales.concat(this.nonmales).slice(nmStart, nmEnd);
+            const nonmalesBenched = this.nonmales.filter(x => nonmales.indexOf(x) < 0);
 
             const availablePositions = new Set(POSITIONS);
 
@@ -102,6 +104,8 @@ class Team {
                     }
                 }
             }
+
+            pos.benched = malesBenched.concat(nonmalesBenched);
 
             innings.push(pos);
         }
@@ -164,6 +168,17 @@ document.getElementById("start-game").addEventListener("click", () => {
     const generateFieldingTable = (inning) => {
         const fieldingTable = document.getElementById("fielding-table");
         fieldingTable.innerHTML = "";
+
+        const row = document.createElement("tr");
+        const positionCell = document.createElement("td");
+        positionCell.textContent = "Benched";
+        const nameCell = document.createElement("td");
+        nameCell.textContent = positions[inning].benched.map(x => x.name).join(", ");
+        nameCell.className = "wide";
+        row.appendChild(positionCell);
+        row.appendChild(nameCell);
+        fieldingTable.appendChild(row);
+
         for (let position of POSITIONS) {
             const row = document.createElement("tr");
             const positionCell = document.createElement("td");
